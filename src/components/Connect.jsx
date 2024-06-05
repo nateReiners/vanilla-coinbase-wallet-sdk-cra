@@ -19,6 +19,7 @@ export const Connect = () => {
     const disconnect = async () => {
         try {
             provider.disconnect()
+            provider.close()
         } catch (error) {
             setError(error)
         }

@@ -9,7 +9,9 @@ export const EventListeners = () => {
   const [message, setMessage] = useState(null);
 
     useEffect(() => {
-        provider.on('connect', (info) => setConnect(info));
+        provider.on('connect', (info) => {
+            setConnect(info)
+        });
         provider.on('disconnect', (error) => setDisconnect(error));
         provider.on('chainChanged', (chainId) => setChainChanged(chainId));
         provider.on('message', (message) => setMessage(message));
@@ -18,7 +20,7 @@ export const EventListeners = () => {
   return (
     <ComponentWrapper componentName="EventListeners">
         <div>
-            {/* <p>Connect Event: {connect}</p> */}
+            <p>Connect Event: {connect}</p>
             <p>Disconnect Event: {JSON.stringify(disconnect)}</p>
             <p>Chain Changed Event: {JSON.stringify(chainChanged)}</p>
             <p>Message Event: {JSON.stringify(message)}</p>
