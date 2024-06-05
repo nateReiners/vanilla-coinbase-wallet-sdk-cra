@@ -8,23 +8,24 @@ export const EventListeners = () => {
   const [chainChanged, setChainChanged] = useState(null);
   const [message, setMessage] = useState(null);
 
-    useEffect(() => {
-        provider.on('connect', (info) => {
-            setConnect(info)
-        });
-        provider.on('disconnect', (error) => setDisconnect(error));
-        provider.on('chainChanged', (chainId) => setChainChanged(chainId));
-        provider.on('message', (message) => setMessage(message));
-    }, [])
-    
+  useEffect(() => {
+    provider.on('connect', (info) => {
+      setConnect(info);
+    });
+    provider.on('disconnect', (error) => setDisconnect(error));
+      provider.on('chainChanged', (chainId) => setChainChanged(chainId));
+    provider.on('message', (message) => setMessage(message));
+  }, []);
+
   return (
     <ComponentWrapper componentName="EventListeners">
-        <div>
-            <p>Connect Event: {connect}</p>
-            <p>Disconnect Event: {JSON.stringify(disconnect)}</p>
-            <p>Chain Changed Event: {JSON.stringify(chainChanged)}</p>
-            <p>Message Event: {JSON.stringify(message)}</p>
-        </div>
+      <div>
+        <h2>Data received from EIP-1193 events:</h2>
+        <p>'connect': {JSON.stringify(connect)}</p>
+        <p>'disconnect': {JSON.stringify(disconnect)}</p>
+        <p>'chainChanged': {JSON.stringify(chainChanged)}</p>
+        <p>'message': {JSON.stringify(message)}</p>
+      </div>
     </ComponentWrapper>
   );
 };

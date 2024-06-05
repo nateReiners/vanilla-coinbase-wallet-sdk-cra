@@ -32,7 +32,6 @@ export const Connect = () => {
         provider.on('disconnect', () => setAddress(null));
     }, [])
 
-    console.log(provider)
     return (
         <ComponentWrapper componentName="Connect">
             {!address ? <button onClick={connect}>Connect Wallet</button> : <div><p>Connected with address: {address}</p><button onClick={disconnect}>Disconnect</button></div>}
