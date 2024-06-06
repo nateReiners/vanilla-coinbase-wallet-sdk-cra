@@ -19,6 +19,12 @@ export const Connect = () => {
     const disconnect = async () => {
         try {
             provider.disconnect()
+        } catch (error) {
+            setError(error)
+        }
+    }
+    const close = async () => {
+        try {
             provider.close()
         } catch (error) {
             setError(error)
@@ -34,7 +40,7 @@ export const Connect = () => {
 
     return (
         <ComponentWrapper componentName="Connect">
-            {!address ? <button onClick={connect}>Connect Wallet</button> : <div><p>Connected with address: {address}</p><button onClick={disconnect}>Disconnect</button></div>}
+            {!address ? <button onClick={connect}>Connect Wallet</button> : <div><p>Connected with address: {address}</p><button onClick={disconnect}>provider.disconnect()</button><button onClick={close}>provider.close()</button></div>}
             {error && <div>{JSON.stringify(error)}</div>}
         </ComponentWrapper>
     )
